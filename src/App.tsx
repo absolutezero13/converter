@@ -229,6 +229,7 @@ function App() {
               {/* <p>{input.text.toUpperCase()}</p> */}
               <input
                 className="input"
+                type="number"
                 value={input.value}
                 onChange={input.function}
                 placeholder={input.text.toUpperCase()}
