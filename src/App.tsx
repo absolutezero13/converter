@@ -230,6 +230,7 @@ function App() {
               <input
                 className="input"
                 type="number"
+                pattern="\d*"
                 value={input.value}
                 onChange={input.function}
                 placeholder={input.text.toUpperCase()}
