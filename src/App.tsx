@@ -8,6 +8,7 @@ import btcImg from "./assets/btcImg.png";
 import eurImg from "./assets/eurImg.png";
 import usdImage from "./assets/usdImage.png";
 import gbpImg from "./assets/gbpImg.png";
+import GitHubIcon from "@material-ui/icons/GitHub";
 
 type changeEvent = React.ChangeEvent<HTMLInputElement>;
 
@@ -68,6 +69,7 @@ function App() {
       text: "try",
       function: (e: changeEvent) => {
         const value = e.target.value;
+
         setTryValue(value);
 
         if (value === "") {
@@ -219,25 +221,12 @@ function App() {
 
   return (
     <div className="App">
-      <div style={{ alignSelf: "center" }} className="inputs-container">
+      <div className="inputs-container">
         {inputData.map((input) => {
           return (
-            <div
-              key={input.text}
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                marginTop: 12,
-                alignItems: "center",
-              }}
-            >
-              <img
-                alt="a"
-                style={{ width: "100px", height: "100px", marginRight: "10px" }}
-                src={input.image}
-              />
-              <p> {input.text.toUpperCase()} </p>
-
+            <div className="input-container" key={input.text}>
+              <img alt="a" className="image" src={input.image} />
+              {/* <p>{input.text.toUpperCase()}</p> */}
               <input
                 className="input"
                 value={input.value}
@@ -248,6 +237,12 @@ function App() {
           );
         })}
       </div>
+      <p style={{ fontSize: "10px", marginTop: 12 }}> *Updates Daily.</p>
+
+      <a className="github-link" href="https://www.github.com/absolutezero13">
+        <p style={{ marginRight: 10 }}> Developer </p>
+        <GitHubIcon fontSize="small" />
+      </a>
     </div>
   );
 }
