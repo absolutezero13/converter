@@ -9,6 +9,8 @@ import eurImg from "./assets/eurImg.png";
 import usdImage from "./assets/usdImage.png";
 import gbpImg from "./assets/gbpImg.png";
 import GitHubIcon from "@material-ui/icons/GitHub";
+import AssetInput from "./Components/AssetInput";
+import Dev from "./Components/Dev";
 
 type changeEvent = React.ChangeEvent<HTMLInputElement>;
 
@@ -26,29 +28,6 @@ function App() {
   const [gbpChangeRates, setGbpChangeRates] = useState<any>();
   const [ethChangeRates, setEthChangeRates] = useState<any>();
   const [btcChangeRates, setBtcChangeRates] = useState<any>();
-
-  // useEffect(() => {
-  //   fetch("https://api.graphql.jobs/", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({
-  //       query: `query {
-  //         jobs {
-  //           title
-  //         }
-  //       }
-  //       `,
-  //     }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => console.log(data));
-  // }, []);
-
-  useEffect(() => {
-    fetch("https://api.exchangerate.host/latest?base=USD")
-      .then((res) => res.json())
-      .then((data) => console.log(data.rates.TRY));
-  }, []);
 
   useEffect(() => {
     inputData.forEach((input) => {
@@ -223,28 +202,11 @@ function App() {
     <div className="App">
       <div className="inputs-container">
         {inputData.map((input) => {
-          return (
-            <div className="input-container" key={input.text}>
-              <img alt="a" className="image" src={input.image} />
-              {/* <p>{input.text.toUpperCase()}</p> */}
-              <input
-                className="input"
-                type="number"
-                pattern="\d*"
-                value={input.value}
-                onChange={input.function}
-                placeholder={input.text.toUpperCase()}
-              />
-            </div>
-          );
+          return <AssetInput inputData={input} />;
         })}
       </div>
-      <p style={{ fontSize: "10px", marginTop: 12 }}> *Updates Daily.</p>
-
-      <a className="github-link" href="https://www.github.com/absolutezero13">
-        <p style={{ marginRight: 10 }}> Developer </p>
-        <GitHubIcon fontSize="small" />
-      </a>
+      <p className="daily-text"> *Updates Daily.</p>
+      <Dev />
     </div>
   );
 }
