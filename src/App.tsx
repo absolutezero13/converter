@@ -8,7 +8,6 @@ import btcImg from "./assets/btcImg.png";
 import eurImg from "./assets/eurImg.png";
 import usdImage from "./assets/usdImage.png";
 import gbpImg from "./assets/gbpImg.png";
-import GitHubIcon from "@material-ui/icons/GitHub";
 import AssetInput from "./Components/AssetInput";
 import Dev from "./Components/Dev";
 
@@ -40,8 +39,6 @@ function App() {
         });
     });
   }, []);
-
-  useEffect(() => {}, []);
 
   const inputData = [
     {
@@ -202,11 +199,13 @@ function App() {
     <div className="App">
       <div className="inputs-container">
         {inputData.map((input) => {
-          return <AssetInput inputData={input} />;
+          return <AssetInput key={input.text} inputData={input} />;
         })}
       </div>
-      <p className="daily-text"> *Updates Daily.</p>
-      <Dev />
+      <div style={{ position: "absolute", bottom: 10, right: 10 }}>
+        <p className="daily-text"> *Updates Daily.</p>
+        <Dev />
+      </div>
     </div>
   );
 }

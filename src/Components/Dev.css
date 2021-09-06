@@ -8,6 +8,7 @@
   color: rgb(73, 70, 70);
   margin-top: 10px;
   transition: all 0.3s ease;
+  align-self: center;
 }
 
 .github-link:hover {
